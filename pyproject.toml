@@ -1,0 +1,28 @@
+[project]
+name = "selenium-learn"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "LedxDeliveryFlopp",email = "korstim18@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pytest (>=8.3.5,<9.0.0)",
+    "selenium (>=4.30.0,<5.0.0)",
+    "allure-pytest (>=2.13.5,<3.0.0)",
+    "pytest-selenium (>=4.1.0,<5.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+#["--locale=ru",
+#    "--alluredir", "allure-results"
+##    "--clean-alluredir"
+#]
+addopts = ["s-", "--alluredir", "allure-results", "--clean-alluredir"]
