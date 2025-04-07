@@ -1,0 +1,5 @@
+{
+  "allure_results": "../allure-results/",
+  "allure_docker_addr": "http://localhost:5050",
+  "create_project_if_dont_exist": true
+}
