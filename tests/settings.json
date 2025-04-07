@@ -1,0 +1,5 @@
+{
+  "selenoid_run": true,
+  "selenium_driver": "Chrome",
+  "browser_lang": "ru"
+}
