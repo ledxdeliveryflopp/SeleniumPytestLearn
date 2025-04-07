@@ -1,0 +1,35 @@
+
+services:
+
+  allure:
+    image: "frankescobar/allure-docker-service"
+    network_mode: bridge
+    environment:
+      CHECK_RESULTS_EVERY_SECONDS: NONE
+      KEEP_HISTORY: NONE
+    ports:
+      - "5050:5050"
+    volumes:
+      - "./allure-results:/app/allure-results"
+      - "./allure-reports:/app/default-reports"
+
+  selenoid:
+    image: "aerokube/selenoid"
+    network_mode: bridge
+    ports:
+      - "4444:4444"
+    volumes:
+      - "./selenoid/:/etc/selenoid/" # директория с browser.json
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  selenoid-ui:
+    image: "aerokube/selenoid-ui"
+    network_mode: bridge
+    links:
+      - selenoid
+    ports:
+      - "8080:8080"
+    command: [ "--selenoid-uri", "http://selenoid:4444" ]
+
+networks:
+  tests:
