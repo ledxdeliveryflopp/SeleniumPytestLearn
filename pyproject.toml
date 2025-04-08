@@ -11,7 +11,8 @@ dependencies = [
     "pytest (>=8.3.5,<9.0.0)",
     "selenium (>=4.30.0,<5.0.0)",
     "allure-pytest (>=2.13.5,<3.0.0)",
-    "pytest-selenium (>=4.1.0,<5.0.0)"
+    "pytest-selenium (>=4.1.0,<5.0.0)",
+    "pytest-xdist (>=3.6.1,<4.0.0)"
 ]
 
 
@@ -21,8 +22,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
-#["--locale=ru",
-#    "--alluredir", "allure-results"
-##    "--clean-alluredir"
-#]
-addopts = ["s-", "--alluredir", "allure-results", "--clean-alluredir"]
+addopts = ["-s", "-n", "auto", "--alluredir", "allure-results", "--clean-alluredir"]
+markers = [
+    "profile_center: Тестирование аккаунт центра"
+]
