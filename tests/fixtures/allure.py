@@ -14,9 +14,16 @@ def clear_allure_static_folder() -> None:
         print(exc)
 
 
+def check_allure_static_exist() -> None:
+    static_dir = os.path.exists("./allure_static/")
+    if static_dir is False:
+        os.mkdir("./allure_static")
+
+
 @pytest.fixture(scope="session", autouse=True)
 @allure.title("Очистка директории скриншотов Selenium")
 def clear_static_folder() -> None:
+    check_allure_static_exist()
     clear_allure_static_folder()
     yield
     clear_allure_static_folder()

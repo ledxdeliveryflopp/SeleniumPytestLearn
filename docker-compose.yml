@@ -30,6 +30,4 @@ services:
     ports:
       - "8080:8080"
     command: [ "--selenoid-uri", "http://selenoid:4444" ]
-
-networks:
-  tests:
+dock
